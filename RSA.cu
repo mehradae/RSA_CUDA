@@ -134,11 +134,11 @@ void ce() {
 		flag = prime(i);
 		if (flag == 1 && i != p && i != q) {
 			e[k] = i;
-			long int k = 1;
+			long int z = 1;
 			while (1) {
-				k = k + t;
-				if (k % x == 0)
-					flag = k / x;
+				z = z + t;
+				if (z % e[k] == 0)
+					flag = z / e[k];
 			}
 			//flag = cd(e[k]);
 			if (flag > 0) {
