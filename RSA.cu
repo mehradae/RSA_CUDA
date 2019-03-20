@@ -219,7 +219,7 @@ void encrypt_gpu() {
 	rsa<<<blocksPerGrid, threadsPerBlock>>>(dev_num,dev_key,dev_den,dev_res);
 	cudaEventRecord(stop_encrypt);
 	cudaEventSynchronize(stop_encrypt);
-	__synchthreads();
+	cudaDeviceSynchronize();
 	cudaEventElapsedTime(&time_encrypt_gpu, start_encrypt, stop_encrypt);
 
 	cudaMemcpy(res, dev_res, numChars * sizeof(int), cudaMemcpyDeviceToHost);
@@ -272,7 +272,7 @@ void decrypt_gpu() {
 	rsa<<<blocksPerGrid, threadsPerBlock>>>(dev_num,dev_key,dev_den,dev_res);
 	cudaEventRecord(stop_decrypt);
 	cudaEventSynchronize(stop_decrypt);
-	__syncthreads();
+	cudaDeviceSynchronize();
 	cudaEventElapsedTime(&time_decrypt_gpu, start_decrypt, stop_decrypt);
 
 	cudaMemcpy(res, dev_res, numChars * sizeof(int), cudaMemcpyDeviceToHost);
