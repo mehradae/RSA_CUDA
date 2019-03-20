@@ -66,7 +66,7 @@ int main() {
 	}
 	if (fgets(msg, BUZZ_SIZE, f) != NULL) {
 		//printf("String read: %s\n", msg);
-		printf("Reading input file...done(");
+		printf("Reading input file...done");
 	}
 	fclose(f);
 
@@ -137,10 +137,11 @@ void ce() {
 			long int z = 1;
 			while (1) {
 				z = z + t;
-				if (z % e[k] == 0)
+				if (z % e[k] == 0){
 					flag = z / e[k];
+					break;
+				}
 			}
-			//flag = cd(e[k]);
 			if (flag > 0) {
 				d[k] = flag;
 				k++;
@@ -151,14 +152,6 @@ void ce() {
 	}
 }
 
-long int cd(long int x) {
-	long int k = 1;
-	while (1) {
-		k = k + t;
-		if (k % x == 0)
-			return (k / x);
-	}
-}
 
 void encrypt() {
 	double start_encrypt, end_encrypt;
@@ -245,7 +238,7 @@ void encrypt_gpu() {
 	 printf("\n");
 	 */
 
-	printf("Saving GPU encrypted file in encrypted_gou.txt\n");
+	printf("Saving GPU encrypted file in encrypted_gpu.txt\n");
 	FILE *fp = fopen("encrypted_gpu.txt", "wb");
 	if (fp != NULL) {
 		for (i = 0; i < numChars; i++) {
@@ -298,7 +291,7 @@ void decrypt_gpu() {
 	 printf("\n");
 	 */
 
-	printf("Saving GPU decrypted file in decrypted_gpu.txt");
+	printf("Saving GPU decrypted file in decrypted_gpu.txt\n");
 	FILE *fp = fopen("decrypted_gpu.txt", "wb");
 	if (fp != NULL) {
 		for (i = 0; i < numChars; i++) {
@@ -340,7 +333,7 @@ void decrypt() {
 	 printf("\n");
 	 */
 
-	printf("Saving CPU decrypted file in decrypted_cpu.txt");
+	printf("Saving CPU decrypted file in decrypted_cpu.txt\n");
 	m[i] = -1;
 	FILE *fp = fopen("decrypted_cpu.txt", "wb");
 	if (fp != NULL) {
